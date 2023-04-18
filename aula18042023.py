@@ -12,7 +12,28 @@ cursor = conexao.cursor()
 
 # laço para repetir a consulta
 
+
+
+
+
+
+# laço para repetir cadastro
 while True:
+    resp = input("Deseja cadastrar? (s/n) ")
+    if resp =="n":
+        break
+    descricao = input("Descriçao: ")
+    posicao = input("Posição? ")
+    cursor.execute(f'''INSERT INTO itens
+    VALUES(null, "{descricao}", "{posicao}");
+    ''')
+
+
+
+
+
+
+
 
     item = input("Qual item deseja localizar? ")
     pos = input("Qual posição?  ")
@@ -60,5 +81,4 @@ while True:
     #print(cursor.rowcount, "itens encontrados.")
 
     #fechar o cursor
-
 
