@@ -10,39 +10,55 @@ conexao = mysql.connector.connect(
 
 cursor = conexao.cursor()
 
-#solicita digitação do item a localizar
+# laço para repetir a consulta
 
-item = input("Qual item deseja localizar?")
+while True:
 
-#executar a consulta
-cursor.execute(f'''SELECT * FROM itens WHERE descricao LIKE "%{item}%"; ''')
-
-# processa todos os registros do cursor
-
-#cursor.fetchall()
-
-#converte od dados para uma lista
-
-dados = cursor.fetchall()
-
-#exibir os dados do cursor
-#for linha in cursor:
-#    print(linha)
+    item = input("Qual item deseja localizar? ")
+    pos = input("Qual posição?  ")
 
 
-#Exibir os dados do cursor
-for linha in dados:
-    print("código: ", linha[0])
-    print("descrição: ", linha[1])
-    print("posição: ", linha[2])
-    print("----------------------")
+    #solicita digitação do item a localizar
 
-# processa todos os registros do cursor
-cursor.fetchall()
-#retorna qts itens afetados no último comando
-#informa o tamanho da lista
-print(len(dados), "itens encontrados.")
-#print(cursor.rowcount, "itens encontrados.")
+    #item = input("Qual item deseja localizar?")
 
-#fecharo cursor
+    #executar a consulta
+    cursor.execute(f'''SELECT * FROM itens
+    WHERE descricao LIKE "%{item}%"
+    AND posicao LIKE "%{pos}%"; ''')
+
+    # processa todos os registros do cursor
+
+    #cursor.fetchall()
+
+    #converte od dados para uma lista
+
+    dados = cursor.fetchall()
+
+    #exibir os dados do cursor
+    #for linha in cursor:
+    #    print(linha)
+
+
+    #Exibir os dados do cursor
+    for linha in dados:
+        print("código: ", linha[0])
+        print("descrição: ", linha[1])
+        print("posição: ", linha[2])
+        print("----------------------")
+
+    # processa todos os registros do cursor
+    cursor.fetchall()
+    #retorna qts itens afetados no último comando
+    #informa o tamanho da lista
+    print(len(dados), "itens encontrados.")
+
+    resp = input("Repetir a consulta? (s/n)")
+    if resp == "n":
+        break
+
+    #print(cursor.rowcount, "itens encontrados.")
+
+    #fechar o cursor
+
 
