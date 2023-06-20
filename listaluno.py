@@ -36,6 +36,7 @@ class Ui_ListaAluno(object):
         self.verticalLayout.addWidget(self.botao_listar)
         self.text_dados = QtWidgets.QTextEdit(parent=self.centralwidget)
         self.text_dados.setObjectName("text_dados")
+        self.text_dados.setReadOnly(True)
         self.verticalLayout.addWidget(self.text_dados)
         ListaAluno.setCentralWidget(self.centralwidget)
 
